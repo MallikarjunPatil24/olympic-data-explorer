@@ -1,0 +1,71 @@
+:root {
+  /* ─── COLORS: Scoreboard Dark Mode ─── */
+  --bg-primary: #0D0E0B;
+  --bg-secondary: #151714;
+  --bg-elevated: #1C1D18;
+  --bg-surface: #1A1B16;
+  --border-subtle: #262720;
+  --border-strong: #3A3B34;
+
+  --text-primary: #F2F2EC;
+  --text-secondary: #A0A198;
+  --text-muted: #6B6C64;
+
+  --bg-hover: rgba(242, 242, 236, 0.04);
+  --bg-active: rgba(242, 242, 236, 0.07);
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.02);
+
+  /* ─── ACCENTS ─── */
+  --accent-gold: #F4C300;
+  --accent-silver: #C8C8C8;
+  --accent-bronze: #CD7F32;
+  --accent-blue: #0085C7;
+  --accent-green: #009F3D;
+  --accent-red: #DF0024;
+  --accent-scoreboard: #00FF66;
+
+  /* ─── TYPOGRAPHY ─── */
+  --font-heading: 'Archivo', 'Inter', sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'Roboto Mono', 'Consolas', monospace;
+
+  /* ─── SPACING (4px base) ─── */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+
+  /* ─── BORDER RADII ─── */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-none: 0px;
+}
+
+/* ─── LIGHT MODE ─── */
+[data-theme="light"] {
+  --bg-primary: #F5F4F0;
+  --bg-secondary: #FFFFFF;
+  --bg-elevated: #EDECE7;
+  --bg-surface: #F9F8F5;
+  --border-subtle: #DDDCD6;
+  --border-strong: #B5B4AD;
+
+  --text-primary: #18190F;
+  --text-secondary: #5C5D54;
+  --text-muted: #8D8E85;
+
+  --bg-hover: rgba(24, 25, 15, 0.035);
+  --bg-active: rgba(24, 25, 15, 0.065);
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(0, 0, 0, 0.04);
+
+  --accent-gold: #D9A400;
+  --accent-silver: #8A8A8A;
+  --accent-bronze: #A65F1B;
+  --accent-blue: #006BA6;
+  --accent-green: #007830;
+  --accent-red: #B8001A;
+}

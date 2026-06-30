@@ -1,0 +1,79 @@
+@media print {
+  /* Hide sidebar navigation, navbar header, and active filters */
+  aside,
+  header,
+  footer,
+  .stickyFilterBar,
+  button,
+  select,
+  input,
+  [class*="FilterBar"],
+  [class*="Sidebar"],
+  [class*="Navbar"],
+  [class*="Footer"] {
+    display: none !important;
+  }
+
+  /* Reset shell grid and columns to full width */
+  html, body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    height: auto !important;
+    font-size: 10pt !important;
+  }
+
+  main,
+  [class*="layoutContainer"],
+  [class*="mainWrapper"],
+  [class*="contentPane"] {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background-color: #ffffff !important;
+  }
+
+  /* Remove scrollbars from dashboard container */
+  [class*="dashboardContainer"] {
+    overflow: visible !important;
+    height: auto !important;
+  }
+
+  /* Expand chart cards and grids cleanly */
+  [class*="visualizationsGrid"] {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  [class*="span12"],
+  [class*="span8"],
+  [class*="span7"],
+  [class*="span6"],
+  [class*="span5"],
+  [class*="span4"] {
+    width: 100% !important;
+    grid-column: span 12 !important;
+    page-break-inside: avoid !important;
+    margin-bottom: 20px !important;
+  }
+
+  /* Formats for charts container cards for printing */
+  [class*="card"] {
+    border: 1px solid #cccccc !important;
+    box-shadow: none !important;
+    page-break-inside: avoid !important;
+    background-color: #ffffff !important;
+  }
+
+  /* Format table styling print details */
+  table {
+    page-break-inside: auto !important;
+  }
+  
+  tr {
+    page-break-inside: avoid !important;
+    page-break-after: auto !important;
+  }
+}

@@ -1,0 +1,47 @@
+.divider {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.horizontal {
+  width: 100%;
+  height: 2px;
+  margin: var(--space-4) 0;
+  flex-direction: row;
+}
+
+.vertical {
+  height: 100%;
+  width: 2px;
+  margin: 0 var(--space-4);
+  flex-direction: column;
+}
+
+.line {
+  flex-grow: 1;
+  background-color: var(--border-subtle);
+}
+
+.horizontal .line {
+  height: 1px;
+}
+
+.vertical .line {
+  width: 1px;
+}
+
+.tick {
+  width: 4px;
+  height: 4px;
+  flex-shrink: 0;
+}
+
+.horizontal .tick {
+  margin-left: var(--space-2);
+}
+
+.vertical .tick {
+  margin-top: var(--space-2);
+}

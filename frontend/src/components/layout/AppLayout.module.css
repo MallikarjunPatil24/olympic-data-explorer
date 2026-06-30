@@ -1,0 +1,21 @@
+.layoutContainer {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  grid-template-rows: 100vh;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.mainWrapper {
+  display: grid;
+  grid-template-rows: 52px 1fr auto;
+  overflow: hidden;
+  height: 100%;
+}
+
+.contentPane {
+  overflow-y: auto;
+  padding: var(--space-6) var(--space-7);
+  background-color: var(--bg-app);
+}

@@ -1,0 +1,128 @@
+.tableContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background-color: var(--bg-card);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  text-align: left;
+}
+
+.th {
+  background-color: var(--bg-surface);
+  border-bottom: 2px solid var(--border-subtle);
+  padding: 8px 14px;
+  font-family: var(--font-heading);
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: var(--text-secondary);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.headerCell {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.sortIndicator {
+  font-size: 0.6rem;
+  color: var(--text-muted);
+}
+
+.tr {
+  border-bottom: 1px solid var(--border-subtle);
+  transition: background-color 0.1s ease;
+}
+
+.tr:last-child {
+  border-bottom: none;
+}
+
+.tr:hover {
+  background-color: var(--bg-hover);
+}
+
+.td {
+  padding: 7px 14px;
+  color: var(--text-primary);
+  vertical-align: middle;
+}
+
+.loadingCell, .noDataCell {
+  padding: 40px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 4px;
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.pageInfo {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.04em;
+}
+
+.pageActions {
+  display: flex;
+  gap: 6px;
+}
+
+.pageBtn {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-family: var(--font-heading);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 4px 10px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  outline: none;
+}
+
+.pageBtn:hover:not(:disabled) {
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+  border-color: var(--border-strong);
+}
+
+.pageBtn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.numericCell {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}

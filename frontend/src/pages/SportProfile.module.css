@@ -1,0 +1,266 @@
+.profileContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  width: 100%;
+}
+
+.header {
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: var(--space-3);
+}
+
+.headerTitle {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.backLink {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  margin-bottom: var(--space-2);
+  display: inline-block;
+  transition: color 0.15s ease;
+}
+
+.backLink:hover {
+  color: var(--text-primary);
+}
+
+.sportName {
+  font-size: 1.75rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  color: var(--text-primary);
+}
+
+.subtitle {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-weight: 400;
+}
+
+.statsCard {
+  width: 100%;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-3);
+}
+
+.statBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4) var(--space-2);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background-color: var(--bg-card);
+  box-shadow: var(--card-shadow);
+  min-height: 85px;
+  transition: border-color 0.2s ease;
+  border-top: 3px solid var(--accent-blue);
+}
+
+.statBlock:nth-child(2) {
+  border-top-color: var(--accent-gold);
+}
+
+.statBlock:nth-child(3) {
+  border-top-color: var(--accent-green);
+}
+
+.statBlock:nth-child(4) {
+  border-top-color: var(--accent-red);
+}
+
+.statBlock:hover {
+  border-color: var(--border-strong);
+}
+
+.statCount {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.statLabel {
+  font-family: var(--font-heading);
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-top: 6px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* Charts Row */
+.chartsRow {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--space-4);
+}
+
+.span4 {
+  grid-column: span 4;
+}
+
+.span8 {
+  grid-column: span 8;
+}
+
+/* Table Section */
+.tableSection {
+  margin-top: var(--space-2);
+}
+
+.sectionTitle {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 850;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: var(--space-2);
+  margin-bottom: var(--space-4);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.tableLink {
+  color: var(--accent-blue);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.tableLink:hover {
+  text-decoration: underline;
+}
+
+.nocBadge {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 2px;
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  font-weight: 700;
+  padding: 1px 5px;
+  color: var(--text-secondary);
+  letter-spacing: 0.03em;
+}
+
+.numberCell {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.totalMedalsCell {
+  font-weight: 700;
+}
+
+/* Loading/Error states */
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 0;
+  gap: var(--space-4);
+  border: 1px solid var(--border-subtle);
+  background-color: var(--bg-card);
+  border-radius: var(--radius-md);
+  height: 300px;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border-subtle);
+  border-top-color: var(--accent-blue);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.loadingText {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
+  border: 1px solid var(--accent-red);
+  background-color: rgba(223, 0, 36, 0.03);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.errorTitle {
+  color: var(--accent-red);
+  font-size: 1rem;
+  margin-bottom: var(--space-2);
+  letter-spacing: 0.06em;
+}
+
+.errorText {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  margin-bottom: var(--space-4);
+}
+
+.backBtn {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 6px 14px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.backBtn:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+  border-color: var(--border-strong);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 900px) {
+  .statsGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .chartsRow {
+    grid-template-columns: 1fr;
+  }
+  .span4, .span8 {
+    grid-column: span 1;
+  }
+}

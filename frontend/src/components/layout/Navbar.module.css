@@ -1,0 +1,55 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 var(--space-7);
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-subtle);
+  height: 52px;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.badge {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  background-color: rgba(0, 159, 61, 0.1);
+  color: var(--accent-green);
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(0, 159, 61, 0.15);
+}
+
+.editionText {
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+.themeToggle {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+  padding: 4px 12px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-primary);
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.themeToggle:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+  border-color: var(--border-strong);
+}

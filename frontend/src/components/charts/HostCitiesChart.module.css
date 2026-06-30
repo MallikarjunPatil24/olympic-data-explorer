@@ -1,0 +1,75 @@
+.tableContainer {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  text-align: left;
+}
+
+.thead {
+  background-color: var(--bg-surface);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  border-bottom: 2px solid var(--border-subtle);
+}
+
+.th {
+  padding: 6px 12px;
+  font-family: var(--font-heading);
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.tr {
+  border-bottom: 1px solid var(--border-subtle);
+  transition: background-color 0.1s ease;
+}
+
+.tr:hover {
+  background-color: var(--bg-hover);
+}
+
+.td {
+  padding: 6px 12px;
+  color: var(--text-primary);
+  vertical-align: middle;
+}
+
+.yearCol {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--accent-blue);
+}
+
+.seasonBadge {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  display: inline-block;
+}
+
+.summer {
+  background-color: rgba(244, 195, 0, 0.08);
+  color: var(--accent-gold);
+}
+
+.winter {
+  background-color: rgba(0, 133, 199, 0.08);
+  color: var(--accent-blue);
+}
