@@ -6,13 +6,13 @@ The platform features high-level KPI cards, 8 custom visual panels, dynamic glob
 
 ---
 
-## 🚀 Live Demo & API Documentation
+##  Live Demo & API Documentation
 * **Frontend Demo (Vercel)**: `https://olympic-analytics-dashboard.vercel.app` *(Placeholder)*
 * **API Documentation (Render / Swagger)**: `https://olympic-analytics-backend.onrender.com/docs` *(Placeholder)*
 
 ---
 
-## 🛠️ Technology Stack
+##  Technology Stack
 
 | Layer | Technology | Purpose |
 | :--- | :--- | :--- |
@@ -26,7 +26,7 @@ The platform features high-level KPI cards, 8 custom visual panels, dynamic glob
 
 ---
 
-## 💎 Key Features
+##  Key Features
 * **Interactive KPIs**: 6 core indicators measuring competitors, sports, countries, events, medals, and games.
 * **8 Data Visualizations**: Custom Tooltip-enabled Recharts tracking medal timelines, age divisions, gender split donuts, country tallies, and host distributions.
 * **Global Query Controls**: Compact query bar (year, season, NOC, sport, gender, medals) that updates the entire dashboard simultaneously.
@@ -37,7 +37,7 @@ The platform features high-level KPI cards, 8 custom visual panels, dynamic glob
 
 ---
 
-## 📁 Repository Overview
+##  Repository Overview
 The codebase is structured logically with separate directory layers:
 ```text
 olympic-analytics-dashboard/
@@ -65,7 +65,7 @@ olympic-analytics-dashboard/
 
 ---
 
-## 💻 Local Setup & Execution
+##  Local Setup & Execution
 
 ### 1. Backend API Server Setup
 Initialize a Python virtual environment, install the dependencies, and start the FastAPI server:
@@ -104,5 +104,5 @@ The React SPA client will be active at `http://localhost:5173`.
 
 ---
 
-## 📊 Dataset Attribution
+##  Dataset Attribution
 This project processes historical Olympic results derived from [olympedia.org](https://www.olympedia.org) datasets. All credits belong to the original contributors for aggregating these historical records.
