@@ -14,20 +14,22 @@ def load_raw_data() -> Union[pd.DataFrame, Dict[str, pd.DataFrame]]:
     and returns either a single merged DataFrame (if schemas match) or
     a dictionary mapping filenames to DataFrames.
     """
-    data_dir_path = Path(settings.DATA_DIR)
+    repo_root = Path(__file__).resolve().parent.parent.parent.parent
+    repo_dataset_dir = repo_root / "dataset"
+    
+    data_dir_path = Path(os.getenv("DATA_DIR", settings.DATA_DIR))
     
     # Robust path resolution to handle production environments where CWD varies.
-    # Check both the process CWD and paths relative to this file's folder root.
     if not data_dir_path.is_absolute():
         cwd_resolved = data_dir_path.resolve()
         # Find path relative to the backend workspace root (app root)
         app_root = Path(__file__).parent.parent.parent
         app_resolved = (app_root / data_dir_path).resolve()
         
-        if cwd_resolved.exists() and cwd_resolved.is_dir():
+        if repo_dataset_dir.exists() and repo_dataset_dir.is_dir() and list(repo_dataset_dir.glob("*.csv")):
+            resolved_path = repo_dataset_dir
+        elif cwd_resolved.exists() and cwd_resolved.is_dir():
             resolved_path = cwd_resolved
-        elif app_resolved.exists() and app_resolved.is_dir():
-            resolved_path = app_resolved
         else:
             resolved_path = app_resolved
     else:
