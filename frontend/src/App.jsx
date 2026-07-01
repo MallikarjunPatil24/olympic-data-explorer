@@ -1,9 +1,10 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import AppLayout from './components/layout/AppLayout';
 import { FilterProvider } from './context/FilterContext';
 import { ThemeProvider } from './context/ThemeContext';
 import { ChartSkeleton } from './components/ui/Skeleton';
+import OlympicIntro from './components/intro/OlympicIntro';
 
 // Lazy loaded page components
 const Dashboard = lazy(() => import('./pages/Dashboard'));
@@ -15,10 +16,16 @@ const AthleteExplorer = lazy(() => import('./pages/AthleteExplorer'));
 const AthleteDetail = lazy(() => import('./pages/AthleteDetail'));
 
 export default function App() {
+  const [showIntro, setShowIntro] = useState(true);
+
+  if (showIntro) {
+    return <OlympicIntro onEnter={() => setShowIntro(false)} />;
+  }
+
   return (
     <ThemeProvider>
       <FilterProvider>
-        <Router>
+        <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
           <Suspense fallback={
             <div style={{ padding: 'var(--space-24)', display: 'flex', flexDirection: 'column', gap: 'var(--space-24)' }}>
               <ChartSkeleton />

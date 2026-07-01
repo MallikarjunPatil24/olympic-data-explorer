@@ -64,8 +64,10 @@ export default function FilterBar() {
       <div className={styles.filterBar}>
         {/* Year Dropdown */}
         <div className={styles.filterGroup}>
-          <label className={styles.label}>YEAR</label>
+          <label htmlFor="filter-year" className={styles.label}>YEAR</label>
           <select
+            id="filter-year"
+            name="year"
             className={styles.select}
             value={filters.year || ''}
             onChange={(e) => setFilter('year', e.target.value ? parseInt(e.target.value) : null)}
@@ -105,9 +107,11 @@ export default function FilterBar() {
 
         {/* Country Searchable Dropdown */}
         <div className={styles.filterGroup} ref={countryRef}>
-          <label className={styles.label}>COUNTRY</label>
+          <label htmlFor="filter-country" className={styles.label}>COUNTRY</label>
           <div className={styles.searchableWrapper}>
             <input
+              id="filter-country"
+              name="country"
               type="text"
               className={styles.input}
               placeholder="SEARCH COUNTRY..."
@@ -151,8 +155,10 @@ export default function FilterBar() {
 
         {/* Sport Dropdown */}
         <div className={styles.filterGroup}>
-          <label className={styles.label}>SPORT</label>
+          <label htmlFor="filter-sport" className={styles.label}>SPORT</label>
           <select
+            id="filter-sport"
+            name="sport"
             className={styles.select}
             value={filters.sport || ''}
             onChange={(e) => setFilter('sport', e.target.value || null)}

@@ -89,7 +89,10 @@ export default function AthleteExplorer() {
       </header>
 
       <div className={styles.searchSection}>
+        <label htmlFor="search-athlete" style={{ display: 'none' }}>Search Athlete</label>
         <input
+          id="search-athlete"
+          name="search-athlete"
           type="text"
           className={styles.searchInput}
           placeholder="SEARCH ATHLETE BY NAME (E.G. MICHAEL PHELPS)..."
