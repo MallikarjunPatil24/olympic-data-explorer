@@ -1,6 +1,7 @@
 import logging
 from typing import List
-from fastapi import APIRouter, Request, HTTPException, Depends
+from fastapi import APIRouter, Request, HTTPException, Depends, Query
+from typing import List, Optional
 from app.models.filters import CommonFilters
 from app.models.responses import DashboardStatsResponse, AgeBucketItem
 from app.utils.data_helper import apply_filters
@@ -15,12 +16,25 @@ _age_cache = {}
 @router.get("", response_model=DashboardStatsResponse)
 async def get_dashboard_stats(
     request: Request,
-    filters: CommonFilters = Depends(CommonFilters)
+    year: Optional[int] = Query(None, description="Filter by Olympic year (e.g., 2008)"),
+    season: Optional[str] = Query(None, description="Filter by season (Summer or Winter)"),
+    country: Optional[str] = Query(None, description="Filter by Country NOC code or Team name (e.g., USA)"),
+    sport: Optional[str] = Query(None, description="Filter by sport name (e.g., Athletics)"),
+    gender: Optional[str] = Query(None, alias="sex", description="Filter by gender (M or F)"),
+    medal: Optional[str] = Query(None, description="Filter by medal type (Gold, Silver, Bronze, or None)")
 ):
     """
     Aggregates high-level statistical summaries (Athletes, NOCs, Sports, Events, Medals, and Games)
     for dashboard indicators, respecting active filters.
     """
+    filters = CommonFilters(
+        year=year,
+        season=season,
+        country=country,
+        sport=sport,
+        gender=gender,
+        medal=medal
+    )
     cache_key = (
         filters.year,
         filters.season,
@@ -89,12 +103,25 @@ async def get_dashboard_stats(
 @router.get("/age-distribution", response_model=List[AgeBucketItem])
 async def get_age_distribution(
     request: Request,
-    filters: CommonFilters = Depends(CommonFilters)
+    year: Optional[int] = Query(None, description="Filter by Olympic year (e.g., 2008)"),
+    season: Optional[str] = Query(None, description="Filter by season (Summer or Winter)"),
+    country: Optional[str] = Query(None, description="Filter by Country NOC code or Team name (e.g., USA)"),
+    sport: Optional[str] = Query(None, description="Filter by sport name (e.g., Athletics)"),
+    gender: Optional[str] = Query(None, alias="sex", description="Filter by gender (M or F)"),
+    medal: Optional[str] = Query(None, description="Filter by medal type (Gold, Silver, Bronze, or None)")
 ):
     """
     Aggregates athlete ages into standard bins, respecting active query filters.
     Ranges: Under 15, 15-19, 20-24, 25-29, 30-34, 35-39, 40-44, 45-49, 50+.
     """
+    filters = CommonFilters(
+        year=year,
+        season=season,
+        country=country,
+        sport=sport,
+        gender=gender,
+        medal=medal
+    )
     cache_key = (
         filters.year,
         filters.season,

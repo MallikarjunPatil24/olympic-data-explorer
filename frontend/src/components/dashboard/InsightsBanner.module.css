@@ -1,0 +1,52 @@
+.banner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-5);
+  background: linear-gradient(90deg, rgba(0, 133, 199, 0.08), rgba(0, 159, 61, 0.05));
+  border: 1px solid var(--border-subtle);
+  border-left: 3px solid var(--accent-blue);
+  border-radius: var(--radius-md);
+}
+
+.badge {
+  font-family: var(--font-heading);
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--accent-blue);
+  white-space: nowrap;
+}
+
+.text {
+  flex: 1;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.dots {
+  display: flex;
+  gap: 4px;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  border: none;
+  background: var(--border-subtle);
+  cursor: pointer;
+  padding: 0;
+}
+
+.activeDot {
+  background: var(--accent-blue);
+}
+
+@media (max-width: 768px) {
+  .banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

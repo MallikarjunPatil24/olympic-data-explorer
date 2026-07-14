@@ -1,0 +1,67 @@
+.mapContainer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.mapBg {
+  flex: 1;
+  position: relative;
+  min-height: 280px;
+  background:
+    radial-gradient(ellipse at 30% 40%, rgba(0,133,199,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 60%, rgba(0,159,61,0.05) 0%, transparent 50%),
+    var(--bg-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid var(--accent-blue);
+  background: rgba(0, 133, 199, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  padding: 0;
+}
+
+.bubble:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+  box-shadow: 0 0 12px rgba(0, 133, 199, 0.4);
+  z-index: 2;
+}
+
+.noc {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.count {
+  font-size: 0.5rem;
+  color: var(--text-muted);
+}
+
+.regionLegend {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.regionTag {
+  font-size: 0.55rem;
+  color: var(--text-muted);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 2px 8px;
+}

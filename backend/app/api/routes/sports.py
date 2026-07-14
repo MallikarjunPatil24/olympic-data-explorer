@@ -1,6 +1,7 @@
 import logging
 from typing import List
-from fastapi import APIRouter, Request, HTTPException, Depends
+from fastapi import APIRouter, Request, HTTPException, Depends, Query
+from typing import List, Optional
 from app.models.filters import CommonFilters
 from app.models.responses import SportItemResponse, SportDetailResponse, GenderSplit, MedalTrendItem, SportAthleteItem
 from app.utils.data_helper import apply_filters
@@ -15,12 +16,25 @@ _sport_detail_cache = {}
 @router.get("", response_model=List[SportItemResponse])
 async def get_sports_summary(
     request: Request,
-    filters: CommonFilters = Depends(CommonFilters)
+    year: Optional[int] = Query(None, description="Filter by Olympic year (e.g., 2008)"),
+    season: Optional[str] = Query(None, description="Filter by season (Summer or Winter)"),
+    country: Optional[str] = Query(None, description="Filter by Country NOC code or Team name (e.g., USA)"),
+    sport: Optional[str] = Query(None, description="Filter by sport name (e.g., Athletics)"),
+    gender: Optional[str] = Query(None, alias="sex", description="Filter by gender (M or F)"),
+    medal: Optional[str] = Query(None, description="Filter by medal type (Gold, Silver, Bronze, or None)")
 ):
     """
     Returns lists of Olympic sports along with athlete headcounts, event counts, 
     and total medals won, respecting active filter criteria.
     """
+    filters = CommonFilters(
+        year=year,
+        season=season,
+        country=country,
+        sport=sport,
+        gender=gender,
+        medal=medal
+    )
     cache_key = (
         filters.year,
         filters.season,

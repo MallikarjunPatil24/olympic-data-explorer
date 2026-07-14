@@ -1,4 +1,5 @@
 import logging
+from pathlib import Path
 import pandas as pd
 from app.services.data_loader import load_raw_data
 from app.services.data_cleaner import clean_data
@@ -28,11 +29,23 @@ class DataService:
 
     def initialize(self):
         """
-        Runs the full ingestion, cleaning, and optimization pipeline.
-        This is called during the lifespan startup phase of FastAPI.
+        Runs the ingestion pipeline. If a pre-processed dataset is available,
+        loads it directly in under 2 seconds. Otherwise, falls back to the
+        slow raw CSV parsing/cleaning sequence.
         """
         logger.info("Starting DataService ingestion pipeline...")
         try:
+            # Check for pre-processed compressed CSV
+            preprocessed_path = Path(__file__).resolve().parent.parent / "data" / "olympics_clean.csv.gz"
+            if preprocessed_path.exists():
+                logger.info(f"Pre-processed dataset found at {preprocessed_path}. Loading directly...")
+                df = pd.read_csv(preprocessed_path, compression="gzip")
+                # Since CSV does not preserve Pandas category types, re-run memory optimization
+                self.df = optimize_memory(df)
+                logger.info("DataService pipeline successfully completed (Loaded from pre-processed file).")
+                return
+
+            logger.info("Pre-processed file not found. Executing raw CSV pipeline fallback...")
             # 1. Load CSV data
             raw_data = load_raw_data()
             
@@ -43,7 +56,7 @@ class DataService:
             optimized_df = optimize_memory(cleaned_df)
             
             self.df = optimized_df
-            logger.info("DataService pipeline successfully completed. Dataset loaded in-memory.")
+            logger.info("DataService pipeline successfully completed (Loaded from raw CSV files).")
         except Exception as e:
             logger.critical(f"DataService pipeline initialization failed: {str(e)}", exc_info=True)
             raise e

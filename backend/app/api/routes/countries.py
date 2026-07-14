@@ -1,6 +1,7 @@
 import logging
 from typing import List
-from fastapi import APIRouter, Request, HTTPException, Depends
+from fastapi import APIRouter, Request, HTTPException, Depends, Query
+from typing import List, Optional
 from app.models.filters import CommonFilters
 from app.models.responses import CountryMedalsItem, CountryProfileResponse, MedalTrendItem, SportMedalItem
 from app.utils.data_helper import apply_filters
@@ -15,12 +16,25 @@ _country_profile_cache = {}
 @router.get("", response_model=List[CountryMedalsItem])
 async def get_countries_summary(
     request: Request,
-    filters: CommonFilters = Depends(CommonFilters)
+    year: Optional[int] = Query(None, description="Filter by Olympic year (e.g., 2008)"),
+    season: Optional[str] = Query(None, description="Filter by season (Summer or Winter)"),
+    country: Optional[str] = Query(None, description="Filter by Country NOC code or Team name (e.g., USA)"),
+    sport: Optional[str] = Query(None, description="Filter by sport name (e.g., Athletics)"),
+    gender: Optional[str] = Query(None, alias="sex", description="Filter by gender (M or F)"),
+    medal: Optional[str] = Query(None, description="Filter by medal type (Gold, Silver, Bronze, or None)")
 ):
     """
     Returns a sorted table of countries (NOC codes) with their athlete headcounts
     and medal counts (Gold, Silver, Bronze), respecting active filter selections.
     """
+    filters = CommonFilters(
+        year=year,
+        season=season,
+        country=country,
+        sport=sport,
+        gender=gender,
+        medal=medal
+    )
     cache_key = (
         filters.year,
         filters.season,

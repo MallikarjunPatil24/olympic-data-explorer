@@ -1,0 +1,55 @@
+.scrubber {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: var(--space-2) 0;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.label {
+  font-family: var(--font-heading);
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.minLabel, .maxLabel {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  min-width: 32px;
+}
+
+.minLabel { text-align: right; }
+.maxLabel { text-align: left; }
+
+.slider {
+  flex: 1;
+  accent-color: var(--accent-blue);
+  height: 4px;
+  cursor: pointer;
+}
+
+.clearBtn {
+  align-self: flex-start;
+  background: none;
+  border: none;
+  color: var(--accent-blue);
+  font-family: var(--font-heading);
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  padding: 0;
+}
+
+.clearBtn:hover {
+  text-decoration: underline;
+}

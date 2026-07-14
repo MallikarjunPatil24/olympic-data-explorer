@@ -11,12 +11,25 @@ logger = logging.getLogger(__name__)
 @router.get("", response_model=List[MedalYearTrendItem])
 async def get_medal_trends(
     request: Request,
-    filters: CommonFilters = Depends(CommonFilters)
+    year: Optional[int] = Query(None, description="Filter by Olympic year (e.g., 2008)"),
+    season: Optional[str] = Query(None, description="Filter by season (Summer or Winter)"),
+    country: Optional[str] = Query(None, description="Filter by Country NOC code or Team name (e.g., USA)"),
+    sport: Optional[str] = Query(None, description="Filter by sport name (e.g., Athletics)"),
+    gender: Optional[str] = Query(None, alias="sex", description="Filter by gender (M or F)"),
+    medal: Optional[str] = Query(None, description="Filter by medal type (Gold, Silver, Bronze, or None)")
 ):
     """
     Returns the historical timeline of medals won over the years (for line/area charts),
     respecting active query filters.
     """
+    filters = CommonFilters(
+        year=year,
+        season=season,
+        country=country,
+        sport=sport,
+        gender=gender,
+        medal=medal
+    )
     data_service = getattr(request.app.state, "data_service", None)
     if not data_service:
         raise HTTPException(status_code=500, detail="DataService is not initialized in the application state.")
@@ -65,12 +78,25 @@ async def get_medal_trends(
 async def get_medal_distribution(
     request: Request,
     group_by: Optional[str] = Query(None, description="Group distribution by: 'country' (NOC) or 'sport'"),
-    filters: CommonFilters = Depends(CommonFilters)
+    year: Optional[int] = Query(None, description="Filter by Olympic year (e.g., 2008)"),
+    season: Optional[str] = Query(None, description="Filter by season (Summer or Winter)"),
+    country: Optional[str] = Query(None, description="Filter by Country NOC code or Team name (e.g., USA)"),
+    sport: Optional[str] = Query(None, description="Filter by sport name (e.g., Athletics)"),
+    gender: Optional[str] = Query(None, alias="sex", description="Filter by gender (M or F)"),
+    medal: Optional[str] = Query(None, description="Filter by medal type (Gold, Silver, Bronze, or None)")
 ):
     """
     Returns the count of gold, silver, and bronze medals awarded.
     Can be grouped by 'country' (NOC code) or 'sport' using the group_by query parameter.
     """
+    filters = CommonFilters(
+        year=year,
+        season=season,
+        country=country,
+        sport=sport,
+        gender=gender,
+        medal=medal
+    )
     data_service = getattr(request.app.state, "data_service", None)
     if not data_service:
         raise HTTPException(status_code=500, detail="DataService is not initialized in the application state.")
