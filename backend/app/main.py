@@ -1,6 +1,7 @@
 import os
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
+from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings
 from app.api.routes import api_router
@@ -34,9 +35,9 @@ app.add_middleware(
 )
 
 # Simple Health Check endpoint to verify API state and connectivity
-@app.get("/health", tags=["health"])
-async def health_check():
-    return {"status": "ok"}
+@app.api_route("/health", methods=["GET", "HEAD"], tags=["health"])
+async def health():
+    return JSONResponse({"status": "ok"})
 
 # Include application routes structured under /api
 app.include_router(api_router, prefix="/api")
